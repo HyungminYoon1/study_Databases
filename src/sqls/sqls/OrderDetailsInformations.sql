@@ -53,3 +53,16 @@ SELECT * FROM Products LEFT JOIN (SELECT * FROM OrderDetails LEFT JOIN (SELECT *
 
 -- 요구사항 테이블 : (5) 를 ??에 넣는다.
 SELECT P.ProductName, P.Price, OD.Quantity, CustomerName from (SELECT * FROM Products LEFT JOIN (SELECT * FROM OrderDetails LEFT JOIN (SELECT * FROM Orders LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID) O ON OrderDetails.OrderID = O.OrderID) OD ON Products.ProductID = OD.ProductID) P;
+
+
+-- 상동 쿼리
+SELECT
+    P.ProductName,
+    P.Price,
+    OD.Quantity,
+    C.CustomerName
+FROM
+    ((OrderDetails OD
+        INNER JOIN Products P ON OD.ProductID = P.ProductID)
+        INNER JOIN Orders O ON OD.OrderID = O.OrderID)
+        INNER JOIN Customers C ON O.CustomerID = C.CustomerID;

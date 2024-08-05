@@ -1,0 +1,45 @@
+
+
+-- 테이블 생성
+CREATE TABLE `NOTICE` (
+    `NOTICE_PK`	VARCHAR(20)	NOT NULL,
+    `CONTENT`	VARCHAR(300)	NULL,
+    `WRITER`	VARCHAR(20)	NULL
+);
+
+CREATE TABLE `VISITORS` (
+    `VISITOR_PK`	VARCHAR(20)	NOT NULL,
+    `NOTICE_FK`	VARCHAR(20)	NOT NULL,
+    `VISITOR_NAME`	VARCHAR(20)	NULL
+);
+
+ALTER TABLE `NOTICE` ADD CONSTRAINT `PK_NOTICE` PRIMARY KEY (`NOTICE_PK`);
+
+ALTER TABLE `VISITORS` ADD CONSTRAINT `PK_VISITORS` PRIMARY KEY (`VISITOR_PK`,`NOTICE_FK`);
+
+ALTER TABLE `VISITORS` ADD CONSTRAINT `FK_NOTICE_TO_VISITORS_1` FOREIGN KEY (`NOTICE_FK`)
+    REFERENCES `NOTICE` (`NOTICE_PK`);
+
+
+-- 데이터 입력
+INSERT INTO NOTICE (NOTICE_PK, CONTENT, WRITER) VALUES
+    ('NOTICE_01', '서비스 점검 안내', '관리자'),
+    ('NOTICE_02', '이벤트 안내', '마케팅팀'),
+    ('NOTICE_03', '새로운 기능 추가 안내', '관리자'),
+    ('NOTICE_04', '결제 시스템 업그레이드 안내', '운영팀'),
+    ('NOTICE_05', '서비스 이용약관 변경 안내', '운영팀');
+
+
+INSERT INTO VISITORS (VISITOR_PK, NOTICE_FK, VISITOR_NAME) VALUES
+    ('VISITE_01', 'NOTICE_01', '홍길동'),
+    ('VISITE_02', 'NOTICE_01', '김영희'),
+    ('VISITE_03', 'NOTICE_02', '백지영'),
+    ('VISITE_04', 'NOTICE_02', '최민호'),
+    ('VISITE_05', 'NOTICE_02', '송지현'),
+    ('VISITE_06', 'NOTICE_03', '장성우'),
+    ('VISITE_07', 'NOTICE_03', '백지영'),
+    ('VISITE_08', 'NOTICE_03', '최민호'),
+    ('VISITE_09', 'NOTICE_04', '임현서'),
+    ('VISITE_10', 'NOTICE_05', '강수민'),
+    ('VISITE_11', 'NOTICE_05', '백지영'),
+    ('VISITE_12', 'NOTICE_05', '박정희');

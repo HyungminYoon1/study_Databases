@@ -12,9 +12,17 @@
    GROUP BY T_OUTER_ORS.EmployeeID;
 */
 
-select CategoryName, Produce, Beverages
-
+/*
 -- 카테고리
 select CategoryID, CategoryName, Description from categories;
+*/
 
-
+SELECT
+    COUNT(*) AS ProductCount,
+    CategoryName
+FROM (
+         SELECT *
+         FROM Categories
+         WHERE CategoryName IN ('Produce', 'Beverages')
+     ) AS FilteredCategories
+GROUP BY CategoryName;
