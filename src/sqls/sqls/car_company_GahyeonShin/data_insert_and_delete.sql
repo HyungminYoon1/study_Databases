@@ -29,8 +29,8 @@ INSERT INTO OPTIONS VALUES
     ('OP_10', '어댑티브 크루즈컨트롤');
 
 INSERT INTO YEARS VALUES
-    ('YEAR_01', '2020'),
+    ('YEAR_01', '2017'),
     ('YEAR_02', '2018'),
     ('YEAR_03', '2019'),
-    ('YEAR_04', '2017'),
+    ('YEAR_04', '2020'),
     ('YEAR_05', '2021'),

@@ -1,0 +1,16 @@
+SELECT
+    M.NAME AS 이름,
+    H.HOBBY_NAME AS 취미,
+    M.AGE AS 나이,
+    M.GENDER AS 성별,
+    A.ADDRESS_NAME AS 배송주소,
+    M.PHONE AS 전화번호,
+    M.EMAIL AS 이메일
+FROM
+    MEMBER_INFO MI
+        JOIN
+    MEMBER M ON MI.MEMBER_FK = M.MEMBER_PK
+        JOIN
+    HOBBY H ON MI.HOBBY_FK = H.HOBBY_PK
+        JOIN
+    ADDRESS A ON MI.ADDRESS_FK = A.ADDRESS_PK;
